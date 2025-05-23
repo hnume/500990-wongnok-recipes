@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สูตรส้มตำไทย - Wong Nok</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* สไตล์เฉพาะหน้าส้มตำไทย */
+        .recipe-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .recipe-detail {
+            padding: 3rem 0;
+        }
+        
+        .recipe-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .meta-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ingredients-section, .instructions-section {
+            margin: 2rem 0;
+        }
+        
+        .ingredient-list, .instruction-list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .ingredient-list li, .instruction-list li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .ingredient-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .ingredient-group h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3rem;
+        }
+        
+        .recipe-tips {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .recipe-video {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        
+        .recipe-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .variations {
+            background-color: #f0f7f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .variation-item {
+            margin-bottom: 1rem;
+        }
+        
+        .variation-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        @media (max-width: 576px) {
+            .recipe-meta {
+                gap: 1rem;
+            }
+            
+            .meta-item {
+                min-width: 80px;
+            }
+            
+            .recipe-actions .btn {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><i class="fas fa-utensils"></i> Wong Nok</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+            </nav>
+        </div>
+    </header>
+
+    <!-- Recipe Hero -->
+    <section class="recipe-hero">
+        <div class="container">
+            <h1>ส้มตำไทย</h1>
+            <p>เมนูแซ่บชื่อดังของอีสาน รสชาติเปรี้ยว เผ็ด เค็ม กลมกล่อม</p>
+        </div>
+    </section>
+
+    <!-- Recipe Detail -->
+    <section class="recipe-detail">
+        <div class="container">
+            <div class="recipe-container">
+                <div class="recipe-intro">
+                    <p>ส้มตำไทยหรือส้มตำปูปลาร้าเป็นอาหารยอดนิยมของภาคอีสานที่มีรสชาติจัดจ้าน ด้วยความเปรี้ยวของมะนาว ความเผ็ดของพริก และความกลมกล่อมจากปลาร้า</p>
+                </div>
+
+                <div class="recipe-meta">
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <div>เวลาเตรียม<br>15 นาที</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-utensils"></i>
+                        <div>เวลาปรุง<br>10 นาที</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-user-friends"></i>
+                        <div>สำหรับ<br>2-3 คน</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-fire"></i>
+                        <div>ความยาก<br>ง่าย</div>
+                    </div>
+                </div>
+
+                <div class="ingredients-section">
+                    <h2><i class="fas fa-shopping-basket"></i> ส่วนผสม</h2>
+                    
+                    <div class="ingredient-group">
+                        <h4>ส่วนผสมหลัก</h4>
+                        <ul class="ingredient-list">
+                            <li>มะละกอดิบขูดเส้น 2 ถ้วย</li>
+                            <li>ถั่วฝักยาวหั่นท่อน 1/2 ถ้วย</li>
+                            <li>มะเขือเทศเชอร์รีหั่นครึ่ง 5 ลูก</li>
+                            <li>มะเขือม่วงหั่นชิ้นเล็ก (optional) 1/2 ถ้วย</li>
+                            <li>ถั่วงอก 1/2 ถ้วย</li>
+                            <li>พริกขี้หนูสด 5-15 เม็ด (ตามความเผ็ดชอบ)</li>
+                            <li>กระเทียม 3 กลีบ</li>
+                            <li>มะนาว 2-3 ลูก</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-group">
+                        <h4>เครื่องปรุงรส</h4>
+                        <ul class="ingredient-list">
+                            <li>น้ำปลา 2-3 ช้อนโต๊ะ</li>
+                            <li>น้ำตาลปี๊บ 1 ช้อนโต๊ะ</li>
+                            <li>ปลาร้าสุก 1 ช้อนโต๊ะ</li>
+                            <li>กุ้งแห้ง 1 ช้อนโต๊ะ</li>
+                            <li>ถั่วลิสงคั่ว 1 ช้อนโต๊ะ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-group">
+                        <h4>เครื่องเคียง</h4>
+                        <ul class="ingredient-list">
+                            <li>กะหล่ำปลีซอย</li>
+                            <li>ถั่วฝักยาว</li>
+                            <li>ผักสดตามชอบ</li>
+                            <li>ข้าวเหนียวหรือปาปาดัส</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="instructions-section">
+                    <h2><i class="fas fa-list-ol"></i> วิธีทำ</h2>
+                    <ol class="instruction-list">
+                        <li>เตรียมครกตำ ใส่กระเทียมและพริกขี้หนูลงไปตำให้พอแหลก</li>
+                        <li>ใส่กุ้งแห้งลงไปตำผสม</li>
+                        <li>ใส่มะละกอขูดเส้น ถั่วฝักยาว มะเขือเทศ และมะเขือม่วง (ถ้าใช้) ลงไป</li>
+                        <li>ปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ และน้ำมะนาว ชิมรสตามชอบ</li>
+                        <li>ใส่ปลาร้าสุกและถั่วลิสงคั่วลงไป ตำผสมให้เข้ากันเบาๆ</li>
+                        <li>ใส่ถั่วงอกลงไปคลุกเบาๆ</li>
+                        <li>ตักใส่จาน เสิร์ฟพร้อมผักสดและข้าวเหนียว</li>
+                    </ol>
+                </div>
+
+                <div class="variations">
+                    <h3><i class="fas fa-random"></i> รูปแบบอื่นๆ ของส้มตำ</h3>
+                    <div class="variation-item">
+                        <h4>ส้มตำปู</h4>
+                        <p>เพิ่มปูม้าสับหรือปูดองลงไปในส้มตำ</p>
+                    </div>
+                    <div class="variation-item">
+                        <h4>ส้มตำไทยแซ่บ</h4>
+                        <p>เพิ่มความเผ็ดและใส่เครื่องปรุงมากขึ้น</p>
+                    </div>
+                    <div class="variation-item">
+                        <h4>ส้มตำผลไม้</h4>
+                        <p>ใช้ผลไม้เช่นมะม่วงสับหรือแอปเปิ้ลแทนมะละกอ</p>
+                    </div>
+                    <div class="variation-item">
+                        <h4>ส้มตำทะเล</h4>
+                        <p>เพิ่มกุ้งสดหรือปลาหมึก</p>
+                    </div>
+                </div>
+
+                <div class="recipe-tips">
+                    <h3><i class="fas fa-lightbulb"></i> เคล็ดลับ</h3>
+                    <ul>
+                        <li>ควรใช้มะละกอดิบที่ยังไม่สุกมากจะได้ความกรอบ</li>
+                        <li>หากไม่ชอบปลาร้าสามารถใช้ปลาเจ่าแทนได้</li>
+                        <li>ตำพริกและกระเทียมให้ละเอียดก่อนใส่ส่วนผสมอื่นเพื่อให้รสชาติเข้ากันดี</li>
+                        <li>สำหรับคนไม่ชอบเผ็ดมาก可以减少ปริมาณพริก</li>
+                        <li>สามารถเพิ่มมะเขือเทศเพื่อความเปรี้ยวธรรมชาติ</li>
+                    </ul>
+                </div>
+
+        
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์สูตร</button>
+                    <button class="btn"><i class="far fa-bookmark"></i> บันทึก</button>
+                    <button class="btn"><i class="fas fa-share-alt"></i> แชร์</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Recipes -->
+    
+                <div class="footer-links">
+                    <h3>ลิงก์ด่วน</h3>
+                    <ul>
+                        <li><a href="index.html">หน้าหลัก</a></li>
+                        <li><a href="#">สูตรอาหารทั้งหมด</a></li>
+                        <li><a href="#">หมวดหมู่</a></li>
+                        <li><a href="#">เกี่ยวกับเรา</a></li>
+                        <li><a href="#">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                    <h3>ติดตามเรา</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wong Nok. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        
+
+            const recipeGrid = document.querySelector('.featured-recipes .recipe-grid');
+            if (recipeGrid) {
+                recipeGrid.innerHTML = relatedRecipes.map(recipe => `
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="${recipe.image}" alt="${recipe.title}">
+                            <div class="recipe-time">${recipe.time}</div>
+                        </div>
+                        <div class="recipe-info">
+                            <h3>${recipe.title}</h3>
+                            <div class="recipe-meta">
+                                <span class="difficulty ${recipe.difficulty}">${
+                                    recipe.difficulty === 'easy' ? 'ง่าย' : 
+                                    recipe.difficulty === 'medium' ? 'ปานกลาง' : 'ยาก'
+                                }</span>
+                                <span class="rating"><i class="fas fa-star"></i> ${recipe.rating} (${recipe.reviews})</span>
+                            </div>
+                            <p class="recipe-desc">${recipe.desc}</p>
+                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary">ดูสูตร</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+    </script>
+</body>
+</html>

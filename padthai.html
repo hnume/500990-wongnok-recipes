@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สูตรผัดไทย - Wong Nok</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* สไตล์เฉพาะหน้าผัดไทย */
+        .recipe-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .recipe-detail {
+            padding: 3rem 0;
+        }
+        
+        .recipe-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgb(90, 84, 84);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .meta-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ingredients-section, .instructions-section {
+            margin: 2rem 0;
+        }
+        
+        .ingredient-list, .instruction-list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .ingredient-list li, .instruction-list li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .ingredient-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .ingredient-group h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #4e2525;
+            padding-bottom: 0.3rem;
+        }
+        
+        .recipe-tips {
+            background-color: #4075aa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .recipe-video {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        
+        .recipe-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 576px) {
+            .recipe-meta {
+                gap: 1rem;
+            }
+            
+            .meta-item {
+                min-width: 80px;
+            }
+            
+            .recipe-actions .btn {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Recipe Hero -->
+    <section class="recipe-hero">
+        <div class="container">
+            <h1>ผัดไทย</h1>
+            <p>อาหารจานเด็ดของไทยที่มีชื่อเสียงไปทั่วโลก ด้วยรสชาติที่กลมกล่อม</p>
+        </div>
+    </section>
+
+    <!-- Recipe Detail -->
+    <section class="recipe-detail">
+        <div class="container">
+            <div class="recipe-container">
+                <div class="recipe-intro">
+                    <p>ผัดไทยเป็นอาหารไทยยอดนิยมที่ประกอบด้วยเส้นจันท์ผัดกับไข่, เต้าหู้, ใบกุยช่าย และเครื่องปรุงรสที่ให้รสชาติกลมกล่อม หอมเครื่องเทศไทย</p>
+                </div>
+
+                <div class="recipe-meta">
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <div>เวลาเตรียม<br>20 นาที</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-utensils"></i>
+                        <div>เวลาปรุง<br>15 นาที</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-user-friends"></i>
+                        <div>สำหรับ<br>2 คน</div>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-fire"></i>
+                        <div>ความยาก<br>ปานกลาง</div>
+                    </div>
+                </div>
+
+                <div class="ingredients-section">
+                    <h2><i class="fas fa-shopping-basket"></i> ส่วนผสม</h2>
+                    
+                    <div class="ingredient-group">
+                        <h4>ส่วนผสมหลัก</h4>
+                        <ul class="ingredient-list">
+                            <li>เส้นจันท์ 200 กรัม (แช่น้ำจนนิ่ม)</li>
+                            <li>กุ้งสด 150 กรัม</li>
+                            <li>เต้าหู้เหลืองหั่นชิ้นสี่เหลี่ยมเล็ก 50 กรัม</li>
+                            <li>ใบกุยช่ายหั่นท่อน 1 ถ้วย</li>
+                            <li>ถั่วงอก 1 ถ้วย</li>
+                            <li>ไข่ไก่ 2 ฟอง</li>
+                            <li>หอมแดงซอย 2 หัว</li>
+                            <li>กระเทียมสับ 1 ช้อนโต๊ะ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-group">
+                        <h4>น้ำปรุงรส</h4>
+                        <ul class="ingredient-list">
+                            <li>น้ำปลา 2 ช้อนโต๊ะ</li>
+                            <li>น้ำตาลปี๊บ 2 ช้อนโต๊ะ</li>
+                            <li>น้ำมะขามเปียก 3 ช้อนโต๊ะ</li>
+                            <li>น้ำเปล่า 2 ช้อนโต๊ะ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ingredient-group">
+                        <h4>เครื่องเคียง</h4>
+                        <ul class="ingredient-list">
+                            <li>ถั่วงอกสด</li>
+                            <li>ใบกุยช่าย</li>
+                            <li>มะนาวหั่นเสี้ยว</li>
+                            <li>พริกป่น</li>
+                            <li>ถั่วลิสงคั่วบด</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="instructions-section">
+                    <h2><i class="fas fa-list-ol"></i> วิธีทำ</h2>
+                    <ol class="instruction-list">
+                        <li>เตรียมน้ำปรุงรสโดยผสมน้ำปลา, น้ำตาลปี๊บ, น้ำมะขามเปียก และน้ำเปล่าเข้าด้วยกัน คนให้เข้ากัน</li>
+                        <li>ตั้งกระทะไฟกลาง ใส่น้ำมันเล็กน้อย ใส่กระเทียมสับและหอมแดงซอยลงไปผัดจนหอม</li>
+                        <li>ใส่กุ้งลงไปผัดจนสุก ตามด้วยเต้าหู้เหลือง</li>
+                        <li>เขี่ยส่วนผสมไปข้างกระทะ แตกไข่ลงในกระทะ ตีไข่ให้แตกแล้วผัดรวมกับส่วนผสมอื่น</li>
+                        <li>ใส่เส้นจันท์ที่แช่น้ำแล้วลงไป ผัดให้เข้ากัน</li>
+                        <li>เติมน้ำปรุงรสที่เตรียมไว้ลงไป ผัดให้เส้นซึมซับรสชาติ</li>
+                        <li>ใส่ใบกุยช่ายและถั่วงอกลงไป ผัดเร็วๆ ให้ส่วนผสมเข้ากัน ปิดไฟ</li>
+                        <li>ตักใส่จาน โรยด้วยถั่วลิสงบด เสิร์ฟพร้อมเครื่องเคียง</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-tips">
+                    <h3><i class="fas fa-lightbulb"></i> เคล็ดลับ</h3>
+                    <ul>
+                        <li>ควรแช่เส้นจันท์ในน้ำเย็นประมาณ 10-15 นาที ก่อนนำมาผัด</li>
+                        <li>ใช้ไฟแรงขณะผัดเพื่อให้เส้นไม่แฉะ</li>
+                        <li>สามารถใส่เนื้อไก่หรือหมูแทนกุ้งได้ตามชอบ</li>
+                        <li>สำหรับรสชาติแบบดั้งเดิม ควรใช้น้ำตาลปี๊บ</li>
+                        <li>หากชอบรสจัดสามารถเพิ่มพริกป่นหรือน้ำปลาตามชอบ</li>
+                    </ul>
+                </div>
+                    </div>
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์สูตร</button>
+                    <button class="btn"><i class="far fa-bookmark"></i> บันทึก</button>
+                    <button class="btn"><i class="fas fa-share-alt"></i> แชร์</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Recipes -->
+    <section class="featured-recipes" style="background-color: #7e6565;">
+        <div class="container">
+            
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>เกี่ยวกับ Wong Nok</h3>
+                    <p>เว็บรวบรวมสูตรอาหารไทยและนานาชาติ สำหรับคนรักการทำอาหารทุกระดับ</p>
+                </div>
+                <div class="footer-links">
+                    <h3>ลิงก์ด่วน</h3>
+                    <ul>
+                        <div class="recipe-actions">
+                            
+                        </div>
+                        <li><a href="index.html">หน้าหลัก</a></li>
+                        <li><a href="#">สูตรอาหารทั้งหมด</a></li>
+                        <li><a href="#">หมวดหมู่</a></li>
+                        <li><a href="#">เกี่ยวกับเรา</a></li>
+                        <li><a href="#">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>ติดตามเรา</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wong Nok. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load related recipes
+
+            const recipeGrid = document.querySelector('.featured-recipes .recipe-grid');
+            if (recipeGrid) {
+                recipeGrid.innerHTML = relatedRecipes.map(recipe => `
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="${recipe.image}" alt="${recipe.title}">
+                            <div class="recipe-time">${recipe.time}</div>
+                        </div>
+                        <div class="recipe-info">
+                            <h3>${recipe.title}</h3>
+                            <div class="recipe-meta">
+                                <span class="difficulty ${recipe.difficulty}">${
+                                    recipe.difficulty === 'easy' ? 'ง่าย' : 
+                                    recipe.difficulty === 'medium' ? 'ปานกลาง' : 'ยาก'
+                                }</span>
+                                <span class="rating"><i class="fas fa-star"></i> ${recipe.rating} (${recipe.reviews})</span>
+                            </div>
+                            <p class="recipe-desc">${recipe.desc}</p>
+                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary">ดูสูตร</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+    </script>
+</body>
+</html>

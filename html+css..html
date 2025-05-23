@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wong Nok - สูตรอาหารไทย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e23e3e;
+            --primary-dark: #c53232;
+            --text-color: #333;
+            --text-light: #666;
+            --text-lighter: #bbb;
+            --bg-dark: #2a2a2a;
+            --bg-light: #f5f5f5;
+            --border-color: #ddd;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            font-weight: 600;
+            color: var(--bg-dark);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 400;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            flex: 1 1 300px;
+            margin: 0 1rem;
+            max-width: 600px;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            width: 100%;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .auth-buttons .btn {
+            white-space: nowrap;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-banner h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .hero-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 150px;
+        }
+        
+        .filter-group label {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .filter-group select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        /* Sections */
+        section {
+            padding: 3rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: white;
+        }
+        
+        /* Recipe Cards */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .recipe-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .recipe-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.05);
+        }
+        
+        .recipe-time {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .recipe-info {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .recipe-info h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            align-items: center;
+        }
+        
+        .difficulty {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .difficulty.easy {
+            background-color: #e6f7e6;
+            color: #2e7d32;
+        }
+        
+        .difficulty.medium {
+            background-color: #fff8e6;
+            color: #ff8f00;
+        }
+        
+        .difficulty.hard {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .recipe-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        
+        .see-more {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        
+        /* Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .category-card {
+            text-align: center;
+            transition: var(--transition);
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-card img {
+            border-radius: 50%;
+            margin: 0 auto 0.8rem;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .category-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
+        /* Popular Recipes */
+        .recipe-list {
+            margin-top: 1.5rem;
+        }
+        
+        .popular-recipe {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .popular-recipe:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .popular-rank {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            width: 40px;
+            text-align: center;
+        }
+        
+        .popular-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .popular-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popular-info {
+            flex-grow: 1;
+        }
+        
+        .popular-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .popular-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Quick Recipes */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quick-card {
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .quick-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .quick-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 0.8rem;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .quick-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .quick-info h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .quick-info span {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-about p {
+            color: var(--text-lighter);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-lighter);
+            transition: var(--transition);
+            display: inline-block;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            content: '→ ';
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: var(--text-lighter);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-banner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-banner p {
+                font-size: 1rem;
+            }
+            
+            .search-filters {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .navbar {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .search-bar {
+                order: 3;
+                flex: 1 1 100%;
+                margin: 1rem 0 0;
+                max-width: 100%;
+            }
+            
+            .auth-buttons {
+                margin-left: auto;
+            }
+            
+            .hero-banner {
+                padding: 3rem 0;
+            }
+            
+            .hero-banner h1 {
+                font-size: 1.6rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .category-card img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .popular-recipe {
+                padding: 0.8rem;
+            }
+            
+            .popular-image {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .popular-info h3 {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo a {
+                font-size: 1.3rem;
+            }
+            
+            .auth-buttons .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero-banner {
+                padding: 2rem 0;
+            }
+            
+            .hero-banner h1 {
+                font-size: 1.4rem;
+            }
+            
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                flex: 1 1 auto;
+            }
+            
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .popular-recipe {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .popular-rank {
+                margin-bottom: 0.5rem;
+            }
+            
+            .popular-image {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .popular-meta {
+                justify-content: center;
+            }
+            
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><i class="fas fa-utensils"></i> Wong Nok</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="ค้นหาสูตรอาหาร...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="auth-buttons">
+                    <a href="http://127.0.0.1:5500/.vscode/wong%20nok/loginwongnok.html" class="btn">เข้าสู่ระบบ</a>
+                    <a href="http://127.0.0.1:5500/.vscode/wong%20nok/register.html" class="btn btn-primary">สมัครสมาชิก</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <h1>ค้นพบสูตรอาหารอร่อยๆ จาก Wong Nok</h1>
+            <p>กว่า 1,000 สูตรอาหารไทยและนานาชาติ รอให้คุณมาลองทำ</p>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="cooking-time">เวลาทำอาหาร</label>
+                    <select id="cooking-time">
+                        <option value="">ทั้งหมด</option>
+                        <option value="5-10">5-10 นาที</option>
+                        <option value="11-30">11-30 นาที</option>
+                        <option value="31-60">31-60 นาที</option>
+                        <option value="60+">60+ นาที</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="difficulty">ระดับความยาก</label>
+                    <select id="difficulty">
+                        <option value="">ทั้งหมด</option>
+                        <option value="easy">ง่าย</option>
+                        <option value="medium">ปานกลาง</option>
+                        <option value="hard">ยาก</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">ค้นหาสูตร</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Recipes -->
+    <section class="featured-recipes">
+        <div class="container">
+            <h2>สูตรอาหารแนะนำ</h2>
+            <div class="recipe-grid">
+                <!-- Recipe Card 1 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ต้มยำกุ้ง">
+                        <div class="recipe-time">30 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ต้มยำกุ้ง</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty easy">ง่าย</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5 (120)</span>
+                        </div>
+                        <p class="recipe-desc">ต้มยำกุ้งรสแซ่บ เค็ม เผ็ด เปรี้ยว หอมเครื่องต้มยำ</p>
+                        <a href="http://127.0.0.1:5500/.vscode/wong%20nok/tom-yumkok.html" class="btn btn-primary">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 2 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ผัดไทย">
+                        <div class="recipe-time">20 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ผัดไทย</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty medium">ปานกลาง</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2 (95)</span>
+                        </div>
+                        <p class="recipe-desc">ผัดไทยเส้นจันท์รสชาติกลมกล่อม ใส่ไข่และกุ้งสด</p>
+                        <a href="http://127.0.0.1:5500/.vscode/wong%20nok/padthai.html" class="btn btn-primary">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 3 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="แกงเขียวหวาน">
+                        <div class="recipe-time">45 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>แกงเขียวหวานไก่</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty hard">ยาก</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7 (80)</span>
+                        </div>
+                        <p class="recipe-desc">แกงเขียวหวานไก่รสชาติเข้มข้น หอมเครื่องแกง</p>
+                        <a href="http://127.0.0.1:5500/.vscode/wong%20nok/green-curry-chicken.html" class="btn btn-primary">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 4 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ส้มตำไทย">
+                        <div class="recipe-time">15 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ส้มตำไทย</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty easy">ง่าย</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3 (150)</span>
+                        </div>
+                        <p class="recipe-desc">ส้มตำรสแซ่บแบบไทยแท้ พร้อมปลาร้าและมะเขือยาว</p>
+                        <a href="http://127.0.0.1:5500/.vscode/wong%20nok/som-tum-thai.html" class="btn btn-primary">ดูสูตร</a>
+                    </div>
+                </div>
+            </div>
+            <div class="see-more">
+                <a href="recipes.html" class="btn btn-primary">ดูสูตรอาหารทั้งหมด <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Categories -->
+    <section class="recipe-categories">
+        <div class="container">
+            <h2>หมวดหมู่สูตรอาหาร</h2>
+            <div class="category-grid">
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารไทย">
+                    <h3>อาหารไทย</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารนานาชาติ">
+                    <h3>อาหารนานาชาติ</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารสุขภาพ">
+                    <h3>อาหารสุขภาพ</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="ของหวาน">
+                    <h3>ของหวาน</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="เครื่องดื่ม">
+                    <h3>เครื่องดื่ม</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารจานเดียว">
+                    <h3>อาหารจานเดียว</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Recipes -->
+    <section class="popular-recipes">
+        <div class="container">
+            <h2>สูตรอาหารยอดนิยม</h2>
+            <div class="recipe-list">
+                <!-- Popular Recipe 1 -->
+                <a href="recipe-detail.html" class="popular-recipe">
+                    <div class="popular-rank">1</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ข้าวผัด">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ข้าวผัดกุ้ง</h3>
+                        <div class="popular-meta">
+                            <span><i class="far fa-clock"></i> 20 นาที</span>
+                            <span><i class="fas fa-star"></i> 4.8 (200)</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Popular Recipe 2 -->
+                <a href="recipe-detail.html" class="popular-recipe">
+                    <div class="popular-rank">2</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="แกงเผ็ด">
+                    </div>
+                    <div class="popular-info">
+                        <h3>แกงเผ็ดเป็ดย่าง</h3>
+                        <div class="popular-meta">
+                            <span><i class="far fa-clock"></i> 50 นาที</span>
+                            <span><i class="fas fa-star"></i> 4.7 (180)</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Popular Recipe 3 -->
+                <a href="recipe-detail.html" class="popular-recipe">
+                    <div class="popular-rank">3</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ยำวุ้นเส้น">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ยำวุ้นเส้นกุ้งสด</h3>
+                        <div class="popular-meta">
+                            <span><i class="far fa-clock"></i> 15 นาที</span>
+                            <span><i class="fas fa-star"></i> 4.6 (175)</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Popular Recipe 4 -->
+                <a href="recipe-detail.html" class="popular-recipe">
+                    <div class="popular-rank">4</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ผัดกะเพรา">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ผัดกะเพราหมูสับ</h3>
+                        <div class="popular-meta">
+                            <span><i class="far fa-clock"></i> 15 นาที</span>
+                            <span><i class="fas fa-star"></i> 4.5 (160)</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Popular Recipe 5 -->
+                <a href="recipe-detail.html" class="popular-recipe">
+                    <div class="popular-rank">5</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ต้มข่า">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ต้มข่าไก่</h3>
+                        <div class="popular-meta">
+                            <span><i class="far fa-clock"></i> 30 นาที</span>
+                            <span><i class="fas fa-star"></i> 4.4 (150)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Recipes -->
+    <section class="quick-recipes">
+        <div class="container">
+            <h2>สูตรอาหารทำเร็ว</h2>
+            <div class="quick-grid">
+                <!-- Quick Recipe 1 -->
+                <a href="recipe-detail.html" class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="ไข่ดาว">
+                    </div>
+                    <div class="quick-info">
+                        <h3>ไข่ดาวกรอบ</h3>
+                        <span>5 นาที</span>
+                    </div>
+                </a>
+                
+                <!-- Quick Recipe 2 -->
+                <a href="recipe-detail.html" class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="สลัด">
+                    </div>
+                    <div class="quick-info">
+                        <h3>สลัดซีซาร์</h3>
+                        <span>10 นาที</span

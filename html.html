@@ -1,0 +1,405 @@
+<<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wong Nok - สูตรอาหารไทย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Hero Banner - ปรับให้เด่นขึ้น */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
+            color: #fff;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-banner p {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 400;
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ส่วนอื่นๆ ที่เหลือคงเดิม */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ... CSS อื่นๆ ที่เหลือ ... */
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Wong Nok</a>
+                </div>
+                <!-- ส่วนอื่นๆ ของ navigation -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner ที่ปรับแล้ว -->
+    <section class="hero-banner">
+        <div class="container">
+            <h1>ค้นพบสูตรอาหารอร่อยๆ จาก Wong Nok</h1>
+            <p>กว่า 1,000 สูตรอาหารไทยและนานาชาติ รอให้คุณมาลองทำ</p>
+            <!-- ส่วนค้นหาและฟิลเตอร์ -->
+        </div>
+    </section>
+
+    <!-- ส่วนอื่นๆ ของเว็บไซต์ -->
+</body>
+</html>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label>เวลาทำอาหาร</label>
+                    <select>
+                        <option value="">ทั้งหมด</option>
+                        <option value="5-10">5-10 นาที</option>
+                        <option value="11-30">11-30 นาที</option>
+                        <option value="31-60">31-60 นาที</option>
+                        <option value="60+">60+ นาที</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>ระดับความยาก</label>
+                    <select>
+                        <option value="">ทั้งหมด</option>
+                        <option value="easy">ง่าย</option>
+                        <option value="medium">ปานกลาง</option>
+                        <option value="hard">ยาก</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">ค้นหาสูตร</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Recipes -->
+    <section class="featured-recipes">
+        <div class="container">
+            <h2>สูตรอาหารแนะนำ</h2>
+            <div class="recipe-grid">
+                <!-- Recipe Card 1 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ต้มยำกุ้ง">
+                        <div class="recipe-time">30 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ต้มยำกุ้ง</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty easy">ง่าย</span>
+                            <span class="rating">⭐ 4.5 (120)</span>
+                        </div>
+                        <p class="recipe-desc">ต้มยำกุ้งรสแซ่บ เค็ม เผ็ด เปรี้ยว หอมเครื่องต้มยำ</p>
+                        <a href="recipe-detail.html" class="btn">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 2 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ผัดไทย">
+                        <div class="recipe-time">20 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ผัดไทย</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty medium">ปานกลาง</span>
+                            <span class="rating">⭐ 4.2 (95)</span>
+                        </div>
+                        <p class="recipe-desc">ผัดไทยเส้นจันท์รสชาติกลมกล่อม ใส่ไข่และกุ้งสด</p>
+                        <a href="recipe-detail.html" class="btn">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 3 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="แกงเขียวหวาน">
+                        <div class="recipe-time">45 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>แกงเขียวหวานไก่</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty hard">ยาก</span>
+                            <span class="rating">⭐ 4.7 (80)</span>
+                        </div>
+                        <p class="recipe-desc">แกงเขียวหวานไก่รสชาติเข้มข้น หอมเครื่องแกง</p>
+                        <a href="recipe-detail.html" class="btn">ดูสูตร</a>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 4 -->
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ส้มตำไทย">
+                        <div class="recipe-time">15 นาที</div>
+                    </div>
+                    <div class="recipe-info">
+                        <h3>ส้มตำไทย</h3>
+                        <div class="recipe-meta">
+                            <span class="difficulty easy">ง่าย</span>
+                            <span class="rating">⭐ 4.3 (150)</span>
+                        </div>
+                        <p class="recipe-desc">ส้มตำรสแซ่บแบบไทยแท้ พร้อมปลาร้าและมะเขือยาว</p>
+                        <a href="recipe-detail.html" class="btn">ดูสูตร</a>
+                    </div>
+                </div>
+            </div>
+            <div class="see-more">
+                <a href="recipes.html" class="btn btn-primary">ดูสูตรอาหารทั้งหมด</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Categories -->
+    <section class="recipe-categories">
+        <div class="container">
+            <h2>หมวดหมู่สูตรอาหาร</h2>
+            <div class="category-grid">
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารไทย">
+                    <h3>อาหารไทย</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารนานาชาติ">
+                    <h3>อาหารนานาชาติ</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารสุขภาพ">
+                    <h3>อาหารสุขภาพ</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="ของหวาน">
+                    <h3>ของหวาน</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="เครื่องดื่ม">
+                    <h3>เครื่องดื่ม</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="อาหารจานเดียว">
+                    <h3>อาหารจานเดียว</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Recipes -->
+    <section class="popular-recipes">
+        <div class="container">
+            <h2>สูตรอาหารยอดนิยม</h2>
+            <div class="recipe-list">
+                <!-- Popular Recipe 1 -->
+                <div class="popular-recipe">
+                    <div class="popular-rank">1</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ข้าวผัด">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ข้าวผัดกุ้ง</h3>
+                        <div class="popular-meta">
+                            <span>20 นาที</span>
+                            <span>⭐ 4.8 (200)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Recipe 2 -->
+                <div class="popular-recipe">
+                    <div class="popular-rank">2</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="แกงเผ็ด">
+                    </div>
+                    <div class="popular-info">
+                        <h3>แกงเผ็ดเป็ดย่าง</h3>
+                        <div class="popular-meta">
+                            <span>50 นาที</span>
+                            <span>⭐ 4.7 (180)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Recipe 3 -->
+                <div class="popular-recipe">
+                    <div class="popular-rank">3</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ยำวุ้นเส้น">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ยำวุ้นเส้นกุ้งสด</h3>
+                        <div class="popular-meta">
+                            <span>15 นาที</span>
+                            <span>⭐ 4.6 (175)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Recipe 4 -->
+                <div class="popular-recipe">
+                    <div class="popular-rank">4</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ผัดกะเพรา">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ผัดกะเพราหมูสับ</h3>
+                        <div class="popular-meta">
+                            <span>15 นาที</span>
+                            <span>⭐ 4.5 (160)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Recipe 5 -->
+                <div class="popular-recipe">
+                    <div class="popular-rank">5</div>
+                    <div class="popular-image">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="ต้มข่า">
+                    </div>
+                    <div class="popular-info">
+                        <h3>ต้มข่าไก่</h3>
+                        <div class="popular-meta">
+                            <span>30 นาที</span>
+                            <span>⭐ 4.4 (150)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Recipes -->
+    <section class="quick-recipes">
+        <div class="container">
+            <h2>สูตรอาหารทำเร็ว</h2>
+            <div class="quick-grid">
+                <!-- Quick Recipe 1 -->
+                <div class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="ไข่ดาว">
+                    </div>
+                    <div class="quick-info">
+                        <h3>ไข่ดาวกรอบ</h3>
+                        <span>5 นาที</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Recipe 2 -->
+                <div class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="สลัด">
+                    </div>
+                    <div class="quick-info">
+                        <h3>สลัดซีซาร์</h3>
+                        <span>10 นาที</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Recipe 3 -->
+                <div class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="ขนมปัง">
+                    </div>
+                    <div class="quick-info">
+                        <h3>ขนมปังปิ้ง</h3>
+                        <span>5 นาที</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Recipe 4 -->
+                <div class="quick-card">
+                    <div class="quick-image">
+                        <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="น้ำพริก">
+                    </div>
+                    <div class="quick-info">
+                        <h3>น้ำพริกหนุ่ม</h3>
+                        <span>10 นาที</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>เกี่ยวกับ Wong Nok</h3>
+                    <p>เว็บรวบรวมสูตรอาหารไทยและนานาชาติ สำหรับคนรักการทำอาหารทุกระดับ</p>
+                </div>
+                <div class="footer-links">
+                    <h3>ลิงก์ด่วน</h3>
+                    <ul>
+                        <li><a href="#">หน้าหลัก</a></li>
+                        <li><a href="#">สูตรอาหารทั้งหมด</a></li>
+                        <li><a href="#">หมวดหมู่</a></li>
+                        <li><a href="#">เกี่ยวกับเรา</a></li>
+                        <li><a href="#">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>ติดตามเรา</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wong Nok. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
