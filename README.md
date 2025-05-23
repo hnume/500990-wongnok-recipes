@@ -149,8 +149,24 @@ wong-nok/
 bash
 
 npm install
+
 cd client && npm install
+
 cd ../server && npm install
+
+ตั้งค่าฐานข้อมูล MySQL ในไฟล์ server/config/database.js
+
+รันเซิร์ฟเวอร์:
+bash
+
+# Backend
+
+cd server && npm start
+
+# Frontend (ใน terminal อื่น)
+
+cd client && npm start
+
 
 
 
