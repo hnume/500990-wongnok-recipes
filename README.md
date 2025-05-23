@@ -200,7 +200,6 @@ cd client && npm start
 
     
     
-    
     A[Client] -->|HTTP Requests| B[Node.js Server]
     B -->|Query| C[MySQL Database]
     B -->|API Calls| D[External Services]
