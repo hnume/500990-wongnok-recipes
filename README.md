@@ -171,7 +171,8 @@ wong-nok/
 
 ## 🤝 การมีส่วนร่วม
 
-สามารถ Fork และ Submit Pull Request ได้ที่  [GitHub Repo](https://github.com/your-username/wong-nok)
+สามารถ Fork และ Submit Pull Request ได้ที่  [ git clone https://github.com/hnume/500990-wongnok-recipes.git)
+
 
 ## 📜 ใบอนุญาต
 
