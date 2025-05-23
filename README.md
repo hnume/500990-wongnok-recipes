@@ -160,11 +160,11 @@ cd ../server && npm install
 
 bash
 
-# Backend
+#backend
 
 cd server && npm start
 
-# Frontend (ใน terminal อื่น)
+#frontend (ใน terminal อื่น)
 
 cd client && npm start
 
