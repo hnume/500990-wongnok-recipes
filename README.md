@@ -35,19 +35,33 @@ Wong Nok เป็นเว็บไซต์สูตรอาหารไท�
 -โครงสร้างเพจและการใช้งาน-
 
 wong-nok/
+
 ├── client/                  # ส่วน Frontend
+
 │   ├── public/              # ไฟล์สาธารณะ
+
 │   ├── src/                 # ซอร์สโค้ดหลัก
+
 │   │   ├── assets/          # ไฟล์สื่อ
+
 │   │   ├── components/      # คอมโพเนนต์
+
 │   │   ├── pages/           # หน้าเว็บ
+
 │   │   └── styles/          # สไตล์
+
 ├── server/                  # ส่วน Backend
+
 │   ├── controllers/         # ควบคุมการทำงาน
+
 │   ├── models/              # โมเดลข้อมูล
+
 │   ├── routes/              # เส้นทาง API
+
 │   └── config/              # การตั้งค่า
+
 ├── docker-compose.yml       # คอนฟิก Docker
+
 └── README.md                # เอกสารนี้
 
 
