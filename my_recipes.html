@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wong Nok - ระบบสมาชิก</title>
+    <link href="http://127.0.0.1:5500/html+css..html" rel="http://127.0.0.1:5500/html+css..html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e23e3e;
+            --primary-dark: #c53232;
+            --text-color: #333;
+            --text-light: #666;
+            --text-lighter: #bbb;
+            --bg-dark: #2a2a2a;
+            --bg-light: #f5f5f5;
+            --border-color: #ddd;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            font-weight: 600;
+            color: var(--bg-dark);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 400;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: 1px solid #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+        
+        .btn-outline-primary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            flex: 1 1 300px;
+            margin: 0 1rem;
+            max-width: 600px;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            width: 100%;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .auth-buttons .btn {
+            white-space: nowrap;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        /* Recipe Form */
+        .recipe-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Recipe Cards */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .recipe-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .recipe-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.05);
+        }
+        
+        .recipe-time {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .recipe-info {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .recipe-info h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            align-items: center;
+        }
+        
+        .difficulty {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .difficulty.easy {
+            background-color: #e6f7e6;
+            color: #2e7d32;
+        }
+        
+        .difficulty.medium {
+            background-color: #fff8e6;
+            color: #ff8f00;
+        }
+        
+        .difficulty.hard {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .recipe-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        
+        /* Recipe Detail */
+        .recipe-detail {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .recipe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .recipe-meta-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .recipe-content {
+            margin-bottom: 2rem;
+        }
+        
+        .recipe-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .recipe-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Rating */
+        .rating-box {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .star {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+        
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .recipe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .recipe-header {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recipe-meta-detail {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><i class="fas fa-utensils"></i> Wong Nok</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="ค้นหาสูตรอาหาร...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-primary">บัญชีของฉัน</a>
+                    <a href="http://127.0.0.1:5500/html+css..html" class="btn">ออกจากระบบ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- สูตรอาหารของฉัน -->
+            <section>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>สูตรอาหารของฉัน</h2>
+                    <a href="http://127.0.0.1:5500/%E0%B8%B7new_recipes.html" class="btn btn-primary">สร้างสูตรใหม่</a>
+                </div>
+                
+                <div class="recipe-grid">
+                    <!-- Recipe Card 1 -->
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ต้มยำกุ้ง">
+                            <div class="recipe-time">30 นาที</div>
+                        </div>
+                        <div class="recipe-info">
+                            <h3>ต้มยำกุ้ง</h3>
+                            <div class="recipe-meta">
+                                <span class="difficulty easy">ง่าย</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.5 (120)</span>
+                            </div>
+                            <p class="recipe-desc">ต้มยำกุ้งรสแซ่บ เค็ม เผ็ด เปรี้ยว หอมเครื่องต้มยำ</p>
+                            <div class="d-flex gap-2">
+                                <a href="#recipe-detail" class="btn btn-outline-primary">ดูรายละเอียด</a>
+                                <a href="#edit-recipe" class="btn btn-outline-secondary">แก้ไข</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recipe Card 2 -->
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ผัดไทย">
+                            <div class="recipe-time">20 นาที</div>
+                        </div>
+                        <div class="recipe-info">
+                            <h3>ผัดไทย</h3>
+                            <div class="recipe-meta">
+                                <span class="difficulty medium">ปานกลาง</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.2 (95)</span>
+                            </div>
+                            <p class="recipe-desc">ผัดไทยเส้นจันท์รสชาติกลมกล่อม ใส่ไข่และกุ้งสด</p>
+                            <div class="d-flex gap-2">
+                                <a href="#recipe-detail" class="btn btn-outline-primary">ดูรายละเอียด</a>
+                                <a href="#edit-recipe" class="btn btn-outline-secondary">แก้ไข</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recipe Card 3 -->
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="แกงเขียวหวาน">
+                            <div class="recipe-time">45 นาที</div>
+                        </div>
+                        <div class="recipe-info">
+                            <h3>แกงเขียวหวานไก่</h3>
+                            <div class="recipe-meta">
+                                <span class="difficulty hard">ยาก</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.7 (80)</span>
+                            </div>
+                            <p class="recipe-desc">แกงเขียวหวานไก่รสชาติเข้มข้น หอมเครื่องแกง</p>
+                            <div class="d-flex gap-2">
+                                <a href="#recipe-detail" class="btn btn-outline-primary">ดูรายละเอียด</a>
+                                <a href="#edit-recipe" class="btn btn-outline-secondary">แก้ไข</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- สร้างสูตรอาหารใหม่ -->
+            <section id="create-recipe" class="mt-5">
+                <h2>สร้างสูตรอาหารใหม่</h2>
+                <div class="recipe-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipe-title">ชื่อสูตรอาหาร</label>
+                            <input type="text" id="recipe-title" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recipe-desc">คำอธิบายสั้นๆ</label>
+                            <textarea id="recipe-desc" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cooking-time">เวลาทำอาหาร (นาที)</label>
+                                    <input type="number" id="cooking-time" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="difficulty">ระดับความยาก</label>
+                                    <select id="difficulty" class="form-control" required>
+                                        <option value="easy">ง่าย</option>
+                                        <option value="medium">ปานกลาง</option>
+                                        <option value="hard">ยาก</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recipe-image">รูปภาพสูตรอาหาร</label>
+                            <input type="file" id="recipe-image" class="form-control" accept="image/*">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ingredients">ส่วนผสม</label>
+                            <textarea id="ingredients" class="form-control" required></textarea>
+                            <small class="text-muted">ใส่ส่วนผสมแต่ละอย่างแยกบรรทัด</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="instructions">วิธีทำ</label>
+                            <textarea id="instructions" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">หมวดหมู่</label>
+                            <select id="category" class="form-control" required>
+                                <option value="thai">อาหารไทย</option>
+                                <option value="international">อาหารนานาชาติ</option>
+                                <option value="healthy">อาหารสุขภาพ</option>
+                                <option value="dessert">ของหวาน</option>
+                                <option value="drink">เครื่องดื่ม</option>
+                                <option value="one-dish">อาหารจานเดียว</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">บันทึกสูตรอาหาร</button>
+                            <a href="#" class="btn btn-secondary">ยกเลิก</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- ดูรายละเอียดสูตรอาหาร -->
+            <section id="recipe-detail" class="mt-5">
+                <div class="alert alert-success">
+                    สูตรอาหารของคุณถูกบันทึกเรียบร้อยแล้ว!
+                </div>
+                
+                <div class="recipe-detail">
+                    <div class="recipe-header">
+                        <div>
+                            <h2>ต้มยำกุ้ง</h2>
+                            <p class="text-muted">โดย คุณผู้ใช้ | 25/05/2023</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#edit-recipe" class="btn btn-outline-primary">แก้ไข</a>
+                            <a href="#delete-recipe" class="btn btn-outline-danger">ลบ</a>
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-meta-detail">
+                        <span class="badge bg-secondary">ง่าย</span>
+                        <span><i class="far fa-clock"></i> 30 นาที</span>
+                        <span><i class="fas fa-star"></i> 4.5 (120)</span>
+                    </div>
+                    
+                    <div class="recipe-image mb-4">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ต้มยำกุ้ง" class="img-fluid rounded">
+                    </div>
+                    
+                    <div class="recipe-content">
+                        <p>ต้มยำกุ้งรสแซ่บ เค็ม เผ็ด เปรี้ยว หอมเครื่องต้มยำ อาหารไทยที่โด่งดังไปทั่วโลก</p>
+                        
+                        <div class="recipe-section">
+                            <h3>ส่วนผสม</h3>
+                            <ul>
+                                <li>กุ้งสด 300 กรัม</li>
+                                <li>น้ำเปล่า 3 ถ้วย</li>
+                                <li>เห็ดหอมสด 5 ดอก</li>
+                                <li>ตะไคร้ 2 ต้น</li>
+                                <li>ใบมะกรูด 5 ใบ</li>
+                                <li>ข่า 3 แว่น</li>
+                                <li>พริกขี้หนู 5 เม็ด</li>
+                                <li>น้ำมะนาว 3 ช้อนโต๊ะ</li>
+                                <li>น้ำปลา 2 ช้อนโต๊ะ</li>
+                                <li>น้ำตาลทราย 1 ช้อนชา</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="recipe-section">
+                            <h3>วิธีทำ</h3>
+                            <ol>
+                                <li>ตั้งน้ำเปล่าให้เดือด ใส่ตะไคร้ ข่า และใบมะกรูด ต้มประมาณ 5 นาทีเพื่อให้ได้กลิ่นหอม</li>
+                                <li>ใส่เห็ดหอมสดลงไปต้มต่อประมาณ 2 นาที</li>
+                                <li>ใส่กุ้งลงไป ต้มจนกุ้งสุก</li>
+                                <li>ปรุงรสด้วยน้ำปลา น้ำตาลทราย และน้ำมะนาว ชิมรสตามชอบ</li>
+                                <li>ใส่พริกขี้หนูบุบพอแตก ปิดไฟ ตักเสิร์ฟร้อนๆ</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- แก้ไขสูตรอาหาร -->
+            <section id="edit-recipe" class="mt-5">
+                <h2>แก้ไขสูตรอาหาร</h2>
+                <div class="recipe-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="edit-recipe-title">ชื่อสูตรอาหาร</label>
+                            <input type="text" id="edit-recipe-title" class="form-control" value="ต้มยำกุ้ง" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-recipe-desc">คำอธิบายสั้นๆ</label>
+                            <textarea id="edit-recipe-desc" class="form-control" required>ต้มยำกุ้งรสแซ่บ เค็ม เผ็ด เปรี้ยว หอมเครื่องต้มยำ</textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="edit-cooking-time">เวลาทำอาหาร (นาที)</label>
+                                    <input type="number" id="edit-cooking-time" class="form-control" value="30" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="edit-difficulty">ระดับความยาก</label>
+                                    <select id="edit-difficulty" class="form-control" required>
+                                        <option value="easy" selected>ง่าย</option>
+                                        <option value="medium">ปานกลาง</option>
+                                        <option value="hard">ยาก</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>รูปภาพปัจจุบัน</label>
+                            <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="ต้มยำกุ้ง" class="img-thumbnail mb-2" style="max-width: 200px;">
+                            <input type="file" id="edit-recipe-image" class="form-control" accept="image/*">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-ingredients">ส่วนผสม</label>
+                            <textarea id="edit-ingredients" class="form-control" required>กุ้งสด 300 กรัม
+น้ำเปล่า 3 ถ้วย
+เห็ดหอมสด 5 ดอก
+ตะไคร้ 2 ต้น
+ใบมะกรูด 5 ใบ
+ข่า 3 แว่น
+พริกขี้หนู 5 เม็ด
+น้ำมะนาว 3 ช้อนโต๊ะ
+น้ำปลา 2 ช้อนโต๊ะ
+น้ำตาลทราย 1 ช้อนชา</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-instructions">วิธีทำ</label>
+                            <textarea id="edit-instructions" class="form-control" required>1. ตั้งน้ำเปล่าให้เดือด ใส่ตะไคร้ ข่า และใบมะกรูด ต้มประมาณ 5 นาทีเพื่อให้ได้กลิ่นหอม
+2. ใส่เห็ดหอมสดลงไปต้มต่อประมาณ 2 นาที
+3. ใส่กุ้งลงไป ต้มจนกุ้งสุก
+4. ปรุงรสด้วยน้ำปลา น้ำตาลทราย และน้ำมะนาว ชิมรสตามชอบ
+5. ใส่พริกขี้หนูบุบพอแตก ปิดไฟ ตักเสิร์ฟร้อนๆ</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-category">หมวดหมู่</label>
+                            <select id="edit-category" class="form-control" required>
+                                <option value="thai" selected>อาหารไทย</option>
+                                <option value="international">อาหารนานาชาติ</option>
+                                <option value="healthy">อาหารสุขภาพ</option>
+                                <option value="dessert">ของหวาน</option>
+                                <option value="drink">เครื่องดื่ม</option>
+                                <option value="one-dish">อาหารจานเดียว</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
+                            <a href="#recipe-detail" class="btn btn-secondary">ยกเลิก</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- ลบสูตรอาหาร -->
+            <section id="delete-recipe" class="mt-5">
+                <div class="recipe-detail text-center">
+                    <h2>ยืนยันการลบสูตรอาหาร</h2>
+                    <p class="lead">คุณแน่ใจหรือไม่ว่าต้องการลบสูตร "ต้มยำกุ้ง"?</p>
+                    <p>การลบสูตรอาหารนี้จะไม่สามารถกู้คืนได้</p>
+                    
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <button class="btn btn-danger">ลบสูตรอาหาร</button>
+                        <a href="#recipe-detail" class="btn btn-secondary">ยกเลิก</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Rating -->
+            <section id="recipe-rating" class="mt-5">
+                <div class="recipe-detail">
+                    <h2>ต้มยำกุ้ง</h2>
+                    <div class="recipe-meta-detail">
+                        <span><i class="fas fa-star"></i> 4.5 (120)</span>
+                    </div>
+                    
+                    <div class="rating-box">
+                        <h3>ให้คะแนนสูตรนี้</h3>
+                        <p>คุณให้คะแนนสูตรนี้: 4 ดาว</p>
+                        
+                        <form>
+                            <div class="form-group">
+                                <label>คะแนนของคุณ</label>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="far fa-star star"></i>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">ส่งคะแนน</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>เกี่ยวกับ Wong Nok</h3>
+                    <p>Wong Nok เป็นเว็บไซต์แบ่งปันสูตรอาหารไทยและนานาชาติ ที่ทุกคนสามารถแบ่งปันสูตรอาหารของตัวเองและค้นหาสูตรอาหารใหม่ๆ</p>
+                </div>
+                <div class="footer-links">
+                    <h3>ลิงก์ด่วน</h3>
+                    <ul>
+                        <li><a href="#">หน้าหลัก</a></li>
+                        <li><a href="#">สูตรอาหารทั้งหมด</a></li>
+                        <li><a href="#">หมวดหมู่สูตรอาหาร</a></li>
+                        <li><a href="#">เกี่ยวกับเรา</a></li>
+                        <li><a href="#">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>ติดตามเรา</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wong Nok. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ตัวอย่าง JavaScript สำหรับการทำงาน
+        document.addEventListener('DOMContentLoaded', function() {
+            // ระบบ Rating ด้วยดาว
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    stars.forEach(s => {
+                        if (s.getAttribute('data-value') <= value) {
+                            s.classList.add('fas');
+                            s.classList.remove('far');
+                        } else {
+                            s.classList.add('far');
+                            s.classList.remove('fas');
+                        }
+                    });
+                });
+            });
+            
+            // แสดง/ซ่อนฟอร์มต่างๆ
+            const sections = ['create-recipe', 'recipe-detail', 'edit-recipe', 'delete-recipe', 'recipe-rating'];
+            sections.forEach(section => {
+                const el = document.getElementById(section);
+                if (window.location.hash === `#${section}`) {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // สำหรับตัวอย่างนี้ ให้แสดง recipe-detail เป็นค่าเริ่มต้น
+            if (!window.location.hash) {
+                document.getElementById('recipe-detail').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -6,12 +6,145 @@
     <title>สูตรส้มตำไทย - Wong Nok</title>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* สไตล์เฉพาะหน้าส้มตำไทย */
+        :root {
+            --primary-color: #e23e3e;
+            --primary-dark: #c53232;
+            --text-color: #333;
+            --bg-light: #f5f5f5;
+            --bg-dark: #2a2a2a;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            flex: 1 1 300px;
+            margin: 0 1rem;
+            max-width: 600px;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            width: 100%;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-light);
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 400;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ระบบสมาชิก */
+        .user-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        /* ส่วน Hero */
         .recipe-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                        url('https://images.unsplash.com/photo-1604977046802-80ad5efc67a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -19,6 +152,12 @@
             text-align: center;
         }
         
+        .recipe-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* ส่วนเนื้อหาสูตรอาหาร */
         .recipe-detail {
             padding: 3rem 0;
         }
@@ -42,7 +181,7 @@
         
         .meta-item {
             text-align: center;
-            min-width: 100px;
+            min-width: 80px;
         }
         
         .meta-item i {
@@ -51,96 +190,266 @@
             margin-bottom: 0.5rem;
         }
         
-        .ingredients-section, .instructions-section {
+        /* ส่วนผสมและวิธีทำ */
+        .ingredients-section, 
+        .instructions-section,
+        .recipe-tips {
             margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         
-        .ingredient-list, .instruction-list {
+        .ingredients-section h2,
+        .instructions-section h2,
+        .recipe-tips h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredient-list, 
+        .instruction-list,
+        .recipe-tips ul {
             margin: 1rem 0;
             padding-left: 1.5rem;
         }
         
-        .ingredient-list li, .instruction-list li {
+        .ingredient-list li, 
+        .instruction-list li,
+        .recipe-tips li {
             margin-bottom: 0.8rem;
             line-height: 1.6;
+            padding-left: 0.5rem;
         }
         
-        .ingredient-group {
-            margin-bottom: 1.5rem;
+        .ingredient-list li {
+            list-style-type: square;
+            color: var(--primary-dark);
         }
         
-        .ingredient-group h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3rem;
+        .instruction-list li {
+            list-style-type: decimal;
         }
         
         .recipe-tips {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+            background-color: #f8f4e5;
+            border-left: 4px solid var(--primary-color);
         }
         
-        .recipe-video {
-            margin: 2rem 0;
-            text-align: center;
+        .recipe-tips li {
+            list-style-type: disc;
         }
         
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+        /* ระบบ Rating */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
             margin-top: 1rem;
+            justify-content: center;
         }
         
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
+        .star {
+            color: #ddd;
+            cursor: pointer;
+            font-size: 1.2rem;
         }
         
+        .star.active {
+            color: #FFD700;
+        }
+        
+        .rated {
+            pointer-events: none;
+        }
+        
+        /* ปุ่มการกระทำ */
         .recipe-actions {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             margin-top: 2rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
         
-        .variations {
-            background-color: #f0f7f4;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+        .recipe-actions .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
         }
         
-        .variation-item {
+        .recipe-actions .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .recipe-actions .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* ปุ่มจัดการสูตร */
+        .recipe-management {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-edit {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .form-group {
             margin-bottom: 1rem;
         }
         
-        .variation-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.3rem;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
         }
         
-        @media (max-width: 576px) {
-            .recipe-meta {
-                gap: 1rem;
-            }
-            
-            .meta-item {
-                min-width: 80px;
-            }
-            
-            .recipe-actions .btn {
-                flex: 1 1 100%;
-            }
+        .form-group input, 
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        /* ฟุตเตอร์ */
+        .footer {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-about p {
+            color: #bbb;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            content: '→ ';
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -150,12 +459,21 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="index.html"><i class="fas fa-utensils"></i> Wong Nok</a>
+                    <a href="http://127.0.0.1:5500/html+css..html"><i class="fas fa-utensils"></i> Wong Nok</a>
                 </div>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
+                <div class="search-bar">
+                    <input type="text" placeholder="ค้นหาสูตรอาหาร...">
+                    <button onclick="searchRecipes()"><i class="fas fa-search"></i></button>
                 </div>
-                
+                <div class="auth-buttons" id="authButtons">
+                    <a href="http://127.0.0.1:5500/loginwongnok.html" class="btn">เข้าสู่ระบบ</a>
+                    <a href="http://127.0.0.1:5500/remember.html" class="btn btn-primary">สมัครสมาชิก</a>
+                </div>
+                <div class="user-actions" id="userActions" style="display: none;">
+                    <img src="default-avatar.jpg" alt="User" class="user-avatar" id="userAvatar">
+                    <span id="username"></span>
+                    <a href="#" class="btn" id="logoutBtn">ออกจากระบบ</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -164,18 +482,14 @@
     <section class="recipe-hero">
         <div class="container">
             <h1>ส้มตำไทย</h1>
-            <p>เมนูแซ่บชื่อดังของอีสาน รสชาติเปรี้ยว เผ็ด เค็ม กลมกล่อม</p>
+            <p>เมนูยอดนิยมของไทย รสชาติเปรี้ยว เผ็ด เค็ม หวาน พร้อมความกรุบกรอบของมะละกอ</p>
         </div>
     </section>
 
     <!-- Recipe Detail -->
     <section class="recipe-detail">
         <div class="container">
-            <div class="recipe-container">
-                <div class="recipe-intro">
-                    <p>ส้มตำไทยหรือส้มตำปูปลาร้าเป็นอาหารยอดนิยมของภาคอีสานที่มีรสชาติจัดจ้าน ด้วยความเปรี้ยวของมะนาว ความเผ็ดของพริก และความกลมกล่อมจากปลาร้า</p>
-                </div>
-
+            <div class="recipe-container" id="recipeContainer" data-recipe-id="3" data-owner-id="user123">
                 <div class="recipe-meta">
                     <div class="meta-item">
                         <i class="far fa-clock"></i>
@@ -183,7 +497,7 @@
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-utensils"></i>
-                        <div>เวลาปรุง<br>10 นาที</div>
+                        <div>เวลาปรุง<br>5 นาที</div>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-user-friends"></i>
@@ -195,90 +509,64 @@
                     </div>
                 </div>
 
+                <!-- Rating System -->
+                <div class="rating-container" id="ratingContainer">
+                    <span>ให้คะแนน: </span>
+                    <i class="fas fa-star star" data-rating="1"></i>
+                    <i class="fas fa-star star" data-rating="2"></i>
+                    <i class="fas fa-star star" data-rating="3"></i>
+                    <i class="fas fa-star star" data-rating="4"></i>
+                    <i class="fas fa-star star" data-rating="5"></i>
+                    <span id="ratingText">(ยังไม่ให้คะแนน)</span>
+                </div>
+
                 <div class="ingredients-section">
                     <h2><i class="fas fa-shopping-basket"></i> ส่วนผสม</h2>
-                    
-                    <div class="ingredient-group">
-                        <h4>ส่วนผสมหลัก</h4>
-                        <ul class="ingredient-list">
-                            <li>มะละกอดิบขูดเส้น 2 ถ้วย</li>
-                            <li>ถั่วฝักยาวหั่นท่อน 1/2 ถ้วย</li>
-                            <li>มะเขือเทศเชอร์รีหั่นครึ่ง 5 ลูก</li>
-                            <li>มะเขือม่วงหั่นชิ้นเล็ก (optional) 1/2 ถ้วย</li>
-                            <li>ถั่วงอก 1/2 ถ้วย</li>
-                            <li>พริกขี้หนูสด 5-15 เม็ด (ตามความเผ็ดชอบ)</li>
-                            <li>กระเทียม 3 กลีบ</li>
-                            <li>มะนาว 2-3 ลูก</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="ingredient-group">
-                        <h4>เครื่องปรุงรส</h4>
-                        <ul class="ingredient-list">
-                            <li>น้ำปลา 2-3 ช้อนโต๊ะ</li>
-                            <li>น้ำตาลปี๊บ 1 ช้อนโต๊ะ</li>
-                            <li>ปลาร้าสุก 1 ช้อนโต๊ะ</li>
-                            <li>กุ้งแห้ง 1 ช้อนโต๊ะ</li>
-                            <li>ถั่วลิสงคั่ว 1 ช้อนโต๊ะ</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="ingredient-group">
-                        <h4>เครื่องเคียง</h4>
-                        <ul class="ingredient-list">
-                            <li>กะหล่ำปลีซอย</li>
-                            <li>ถั่วฝักยาว</li>
-                            <li>ผักสดตามชอบ</li>
-                            <li>ข้าวเหนียวหรือปาปาดัส</li>
-                        </ul>
-                    </div>
+                    <ul class="ingredient-list">
+                        <li>มะละกอดิบ 1 ลูกขนาดกลาง (ประมาณ 500 กรัม)</li>
+                        <li>ถั่วฝักยาว 5-6 ฝัก หั่นท่อน</li>
+                        <li>มะเขือเทศเชอร์รี 10 ลูก หั่นครึ่ง</li>
+                        <li>มะเขือเปราะ 5 ลูก หั่นชิ้นเล็ก</li>
+                        <li>พริกขี้หนูสด 10-15 เม็ด (ตามชอบ)</li>
+                        <li>กระเทียมไทย 5 กลีบ</li>
+                        <li>กุ้งแห้ง 2 ช้อนโต๊ะ</li>
+                        <li>ถั่วลิสงคั่ว 2 ช้อนโต๊ะ</li>
+                        <li>น้ำปลา 3 ช้อนโต๊ะ</li>
+                        <li>น้ำตาลปี๊บ 2 ช้อนโต๊ะ</li>
+                        <li>น้ำมะนาว 3 ช้อนโต๊ะ</li>
+                        <li>มะขามเปียก 1 ช้อนโต๊ะ (ไม่บังคับ)</li>
+                    </ul>
                 </div>
 
                 <div class="instructions-section">
                     <h2><i class="fas fa-list-ol"></i> วิธีทำ</h2>
                     <ol class="instruction-list">
-                        <li>เตรียมครกตำ ใส่กระเทียมและพริกขี้หนูลงไปตำให้พอแหลก</li>
-                        <li>ใส่กุ้งแห้งลงไปตำผสม</li>
-                        <li>ใส่มะละกอขูดเส้น ถั่วฝักยาว มะเขือเทศ และมะเขือม่วง (ถ้าใช้) ลงไป</li>
-                        <li>ปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ และน้ำมะนาว ชิมรสตามชอบ</li>
-                        <li>ใส่ปลาร้าสุกและถั่วลิสงคั่วลงไป ตำผสมให้เข้ากันเบาๆ</li>
-                        <li>ใส่ถั่วงอกลงไปคลุกเบาๆ</li>
-                        <li>ตักใส่จาน เสิร์ฟพร้อมผักสดและข้าวเหนียว</li>
+                        <li>ปอกเปลือกมะละกอและขูดเป็นเส้นด้วยที่ขูดมะละกอ แช่ในน้ำเย็นเพื่อให้กรอบ</li>
+                        <li>ตำพริกขี้หนูและกระเทียมในครกจนละเอียด</li>
+                        <li>ใส่กุ้งแห้งลงไปตำพอแตก</li>
+                        <li>ปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ และน้ำมะนาว ชิมรสตามชอบ (ควรได้รสชาติเปรี้ยวนำ เค็มตาม หวานเล็กน้อย)</li>
+                        <li>ใส่มะละกอที่สะเด็ดน้ำแล้วลงไปในครก ตำเบาๆ ให้ส่วนผสมเข้ากัน</li>
+                        <li>ใส่ถั่วฝักยาว มะเขือเทศ และมะเขือเปราะลงไปคลุกเคล้า</li>
+                        <li>โรยถั่วลิสงคั่วและคลุกเบาๆ อีกครั้ง</li>
+                        <li>ตักใส่จาน รับประทานคู่กับข้าวเหนียวหรือปาปาดัม</li>
                     </ol>
-                </div>
-
-                <div class="variations">
-                    <h3><i class="fas fa-random"></i> รูปแบบอื่นๆ ของส้มตำ</h3>
-                    <div class="variation-item">
-                        <h4>ส้มตำปู</h4>
-                        <p>เพิ่มปูม้าสับหรือปูดองลงไปในส้มตำ</p>
-                    </div>
-                    <div class="variation-item">
-                        <h4>ส้มตำไทยแซ่บ</h4>
-                        <p>เพิ่มความเผ็ดและใส่เครื่องปรุงมากขึ้น</p>
-                    </div>
-                    <div class="variation-item">
-                        <h4>ส้มตำผลไม้</h4>
-                        <p>ใช้ผลไม้เช่นมะม่วงสับหรือแอปเปิ้ลแทนมะละกอ</p>
-                    </div>
-                    <div class="variation-item">
-                        <h4>ส้มตำทะเล</h4>
-                        <p>เพิ่มกุ้งสดหรือปลาหมึก</p>
-                    </div>
                 </div>
 
                 <div class="recipe-tips">
                     <h3><i class="fas fa-lightbulb"></i> เคล็ดลับ</h3>
                     <ul>
-                        <li>ควรใช้มะละกอดิบที่ยังไม่สุกมากจะได้ความกรอบ</li>
-                        <li>หากไม่ชอบปลาร้าสามารถใช้ปลาเจ่าแทนได้</li>
-                        <li>ตำพริกและกระเทียมให้ละเอียดก่อนใส่ส่วนผสมอื่นเพื่อให้รสชาติเข้ากันดี</li>
-                        <li>สำหรับคนไม่ชอบเผ็ดมาก可以减少ปริมาณพริก</li>
-                        <li>สามารถเพิ่มมะเขือเทศเพื่อความเปรี้ยวธรรมชาติ</li>
+                        <li>หากชอบรสเปรี้ยวมากสามารถเพิ่มน้ำมะนาวได้ตามชอบ</li>
+                        <li>มะละกอควรแช่น้ำเย็นก่อนใช้จะทำให้กรอบมากขึ้น</li>
+                        <li>สามารถใส่ปูเค็มหรือปูดองเพิ่มได้สำหรับรสชาติที่เข้มข้นขึ้น</li>
+                        <li>สำหรับคนชอบรสเผ็ดน้อยสามารถลดปริมาณพริกลงได้</li>
+                        <li>ควรชิมรสก่อนเสิร์ฟทุกครั้งเพื่อปรับรสชาติให้เหมาะสม</li>
                     </ul>
                 </div>
 
-        
+                <!-- Recipe Management (แสดงเฉพาะเจ้าของสูตร) -->
+                <div class="recipe-management" id="recipeManagement" style="display: none;">
+                    <button class="btn btn-edit" onclick="editRecipe()"><i class="fas fa-edit"></i> แก้ไขสูตร</button>
+                    <button class="btn btn-delete" onclick="deleteRecipe()"><i class="fas fa-trash"></i> ลบสูตร</button>
                 </div>
 
                 <div class="recipe-actions">
@@ -290,18 +578,65 @@
         </div>
     </section>
 
-    <!-- Related Recipes -->
-    
+    <!-- Modal สำหรับแก้ไขสูตรอาหาร -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>แก้ไขสูตรอาหาร</h2>
+            <form id="editRecipeForm" onsubmit="saveRecipeChanges(event)">
+                <input type="hidden" id="recipeId">
+                <div class="form-group">
+                    <label for="editTitle">ชื่อสูตรอาหาร</label>
+                    <input type="text" id="editTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">คำอธิบาย</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editIngredients">ส่วนผสม (แต่ละรายการให้ขึ้นบรรทัดใหม่)</label>
+                    <textarea id="editIngredients" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editInstructions">วิธีทำ (แต่ละขั้นตอนให้ขึ้นบรรทัดใหม่)</label>
+                    <textarea id="editInstructions" rows="7" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTime">เวลาเตรียม (นาที)</label>
+                    <input type="number" id="editTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDifficulty">ระดับความยาก</label>
+                    <select id="editDifficulty" required>
+                        <option value="easy">ง่าย</option>
+                        <option value="medium">ปานกลาง</option>
+                        <option value="hard">ยาก</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>เกี่ยวกับ Wong Nok</h3>
+                    <p>Wong Nok เป็นแหล่งรวมสูตรอาหารไทยและนานาชาติ ที่คัดสรรมาอย่างดีเพื่อทุกคนที่รักในการทำอาหาร</p>
+                </div>
                 <div class="footer-links">
                     <h3>ลิงก์ด่วน</h3>
                     <ul>
-                        <li><a href="http://127.0.0.1:5500/html+css..html">หน้าหลัก</a></li>
-                        <li><a href="#">สูตรอาหารทั้งหมด</a></li>
-                        <li><a href="#">หมวดหมู่</a></li>
-                        <li><a href="#">เกี่ยวกับเรา</a></li>
-                        <li><a href="#">ติดต่อเรา</a></li>
+                        <li><a href="http://127.0.0.1:5500/html+css..htm">หน้าหลัก</a></li>
+                        <li><a href="http://127.0.0.1:5500/Recipe%20Gallery%20Page.html">สูตรอาหารทั้งหมด</a></li>
+                        <li><a href="http://127.0.0.1:5500/Food%20Categories%20.html">หมวดหมู่</a></li>
+                        <li><a href="about.html">เกี่ยวกับเรา</a></li>
+                        <li><a href="contact.html">ติดต่อเรา</a></li>
                     </ul>
                 </div>
+                <div class="footer-social">
                     <h3>ติดตามเรา</h3>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -317,33 +652,205 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        
+        // ข้อมูลตัวอย่าง (ในทางปฏิบัติควรดึงจากฐานข้อมูล)
+        const currentRecipe = {
+            id: "3",
+            title: "ส้มตำไทย",
+            description: "เมนูยอดนิยมของไทย รสชาติเปรี้ยว เผ็ด เค็ม หวาน พร้อมความกรุบกรอบของมะละกอ",
+            ingredients: [
+                "มะละกอดิบ 1 ลูกขนาดกลาง (ประมาณ 500 กรัม)",
+                "ถั่วฝักยาว 5-6 ฝัก หั่นท่อน",
+                "มะเขือเทศเชอร์รี 10 ลูก หั่นครึ่ง",
+                "มะเขือเปราะ 5 ลูก หั่นชิ้นเล็ก",
+                "พริกขี้หนูสด 10-15 เม็ด (ตามชอบ)",
+                "กระเทียมไทย 5 กลีบ",
+                "กุ้งแห้ง 2 ช้อนโต๊ะ",
+                "ถั่วลิสงคั่ว 2 ช้อนโต๊ะ",
+                "น้ำปลา 3 ช้อนโต๊ะ",
+                "น้ำตาลปี๊บ 2 ช้อนโต๊ะ",
+                "น้ำมะนาว 3 ช้อนโต๊ะ",
+                "มะขามเปียก 1 ช้อนโต๊ะ (ไม่บังคับ)"
+            ],
+            instructions: [
+                "ปอกเปลือกมะละกอและขูดเป็นเส้นด้วยที่ขูดมะละกอ แช่ในน้ำเย็นเพื่อให้กรอบ",
+                "ตำพริกขี้หนูและกระเทียมในครกจนละเอียด",
+                "ใส่กุ้งแห้งลงไปตำพอแตก",
+                "ปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ และน้ำมะนาว ชิมรสตามชอบ (ควรได้รสชาติเปรี้ยวนำ เค็มตาม หวานเล็กน้อย)",
+                "ใส่มะละกอที่สะเด็ดน้ำแล้วลงไปในครก ตำเบาๆ ให้ส่วนผสมเข้ากัน",
+                "ใส่ถั่วฝักยาว มะเขือเทศ และมะเขือเปราะลงไปคลุกเคล้า",
+                "โรยถั่วลิสงคั่วและคลุกเบาๆ อีกครั้ง",
+                "ตักใส่จาน รับประทานคู่กับข้าวเหนียวหรือปาปาดัม"
+            ],
+            prepTime: 15,
+            cookTime: 5,
+            difficulty: "easy",
+            ownerId: "user123"
+        };
 
-            const recipeGrid = document.querySelector('.featured-recipes .recipe-grid');
-            if (recipeGrid) {
-                recipeGrid.innerHTML = relatedRecipes.map(recipe => `
-                    <div class="recipe-card">
-                        <div class="recipe-image">
-                            <img src="${recipe.image}" alt="${recipe.title}">
-                            <div class="recipe-time">${recipe.time}</div>
-                        </div>
-                        <div class="recipe-info">
-                            <h3>${recipe.title}</h3>
-                            <div class="recipe-meta">
-                                <span class="difficulty ${recipe.difficulty}">${
-                                    recipe.difficulty === 'easy' ? 'ง่าย' : 
-                                    recipe.difficulty === 'medium' ? 'ปานกลาง' : 'ยาก'
-                                }</span>
-                                <span class="rating"><i class="fas fa-star"></i> ${recipe.rating} (${recipe.reviews})</span>
-                            </div>
-                            <p class="recipe-desc">${recipe.desc}</p>
-                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary">ดูสูตร</a>
-                        </div>
-                    </div>
-                `).join('');
+        // ตรวจสอบสถานะการล็อกอินเมื่อโหลดหน้า
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+            setupRatingSystem();
+        });
+
+        // ฟังก์ชันตรวจสอบสถานะล็อกอิน
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authButtons = document.getElementById('authButtons');
+            const userActions = document.getElementById('userActions');
+            
+            if (isLoggedIn) {
+                authButtons.style.display = 'none';
+                userActions.style.display = 'flex';
+                
+                // ดึงข้อมูลผู้ใช้
+                const user = JSON.parse(localStorage.getItem('user'));
+                document.getElementById('username').textContent = user.username;
+                document.getElementById('userAvatar').src = user.avatar || 'default-avatar.jpg';
+                
+                // ตรวจสอบว่าเป็นเจ้าของสูตรหรือไม่
+                if (user.id === currentRecipe.ownerId) {
+                    document.getElementById('recipeManagement').style.display = 'flex';
+                    document.getElementById('ratingContainer').style.display = 'none';
+                }
+            } else {
+                authButtons.style.display = 'flex';
+                userActions.style.display = 'none';
             }
+        }
+
+        // ฟังก์ชันออกจากระบบ
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        });
+
+        // ระบบ Rating
+        function setupRatingSystem() {
+            const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+            const recipeOwnerId = document.getElementById('recipeContainer').getAttribute('data-owner-id');
+            
+            // ไม่แสดง rating สำหรับเจ้าของสูตร
+            if (currentUser.id === recipeOwnerId) {
+                document.getElementById('ratingContainer').style.display = 'none';
+                return;
+            }
+            
+            const stars = document.querySelectorAll('.star');
+            const ratedRecipes = JSON.parse(localStorage.getItem('ratedRecipes')) || {};
+            
+            // ตรวจสอบว่าผู้ใช้เคยให้ rating แล้วหรือไม่
+            if (ratedRecipes[currentRecipe.id]) {
+                highlightStars(ratedRecipes[currentRecipe.id]);
+                document.getElementById('ratingText').textContent = `(คุณให้ ${ratedRecipes[currentRecipe.id]} ดาว)`;
+                document.getElementById('ratingContainer').classList.add('rated');
+            }
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    if (!currentUser.id) {
+                        alert('กรุณาล็อกอินก่อนให้คะแนน');
+                        return;
+                    }
+                    
+                    if (currentUser.id === recipeOwnerId) {
+                        alert('คุณไม่สามารถให้คะแนนสูตรอาหารของคุณเองได้');
+                        return;
+                    }
+                    
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    rateRecipe(rating);
+                });
+            });
+        }
+
+        // ฟังก์ชันให้คะแนน
+        function rateRecipe(rating) {
+            const ratedRecipes = JSON.parse(localStorage.getItem('ratedRecipes')) || {};
+            ratedRecipes[currentRecipe.id] = rating;
+            localStorage.setItem('ratedRecipes', JSON.stringify(ratedRecipes));
+            
+            highlightStars(rating);
+            document.getElementById('ratingText').textContent = `(คุณให้ ${rating} ดาว)`;
+            document.getElementById('ratingContainer').classList.add('rated');
+            
+            // ในทางปฏิบัติควรส่งข้อมูลไปยังเซิร์ฟเวอร์
+            console.log(`ให้คะแนนสูตร ${currentRecipe.id} ระดับ ${rating} ดาว`);
+            alert('ขอบคุณสำหรับการให้คะแนน!');
+        }
+
+        // ฟังก์ชันแสดงดาวที่ถูกเลือก
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                if (parseInt(star.getAttribute('data-rating')) <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // ฟังก์ชันแก้ไขสูตรอาหาร
+        function editRecipe() {
+            document.getElementById('recipeId').value = currentRecipe.id;
+            document.getElementById('editTitle').value = currentRecipe.title;
+            document.getElementById('editDescription').value = currentRecipe.description;
+            document.getElementById('editIngredients').value = currentRecipe.ingredients.join('\n');
+            document.getElementById('editInstructions').value = currentRecipe.instructions.join('\n');
+            document.getElementById('editTime').value = currentRecipe.prepTime;
+            document.getElementById('editDifficulty').value = currentRecipe.difficulty;
+            
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        // ฟังก์ชันปิด modal
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // ฟังก์ชันบันทึกการแก้ไข
+        function saveRecipeChanges(e) {
+            e.preventDefault();
+            
+            // ในทางปฏิบัติควรส่งข้อมูลไปยังเซิร์ฟเวอร์
+            console.log('บันทึกการเปลี่ยนแปลงสูตรอาหาร:', {
+                id: document.getElementById('recipeId').value,
+                title: document.getElementById('editTitle').value,
+                description: document.getElementById('editDescription').value,
+                ingredients: document.getElementById('editIngredients').value.split('\n'),
+                instructions: document.getElementById('editInstructions').value.split('\n'),
+                prepTime: document.getElementById('editTime').value,
+                difficulty: document.getElementById('editDifficulty').value
+            });
+            
+            alert('บันทึกการเปลี่ยนแปลงเรียบร้อยแล้ว');
+            closeModal();
+            // ในทางปฏิบัติควรโหลดข้อมูลใหม่หรืออัปเดตหน้า
+        }
+
+        // ฟังก์ชันลบสูตรอาหาร
+        function deleteRecipe() {
+            if (confirm('คุณแน่ใจหรือไม่ว่าต้องการลบสูตรอาหารนี้?')) {
+                // ในทางปฏิบัติควรส่งคำขอลบไปยังเซิร์ฟเวอร์
+                console.log('ลบสูตรอาหาร ID:', currentRecipe.id);
+                alert('ลบสูตรอาหารเรียบร้อยแล้ว');
+                window.location.href = 'my-recipes.html'; // เปลี่ยนเส้นทางไปยังหน้ารายการสูตรอาหารของผู้ใช้
+            }
+        }
+
+        // ฟังก์ชันค้นหาสูตรอาหาร
+        function searchRecipes() {
+            const searchTerm = document.querySelector('.search-bar input').value.trim().toLowerCase();
+            if (searchTerm) {
+                // ในทางปฏิบัติควรส่งคำค้นหาไปยังเซิร์ฟเวอร์
+                console.log('ค้นหา:', searchTerm);
+                window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+            }
+        }
     </script>
 </body>
 </html>
