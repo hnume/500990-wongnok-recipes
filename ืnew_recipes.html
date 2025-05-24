@@ -10,19 +10,21 @@
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #FFF5E6; /* สีพื้นหลังโทนส้มอ่อน */
+            color: #5A3E36; /* สีข้อความโทนน้ำตาลเข้ม */
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: #FFF9F2; /* สีพื้นหลัง container โทนส้มอ่อนมาก */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(234, 153, 81, 0.1); /* เงาสีส้มอ่อน */
+            position: relative;
+            border: 1px solid #FFD8B8; /* กรอบสีส้มอ่อน */
         }
         h1 {
-            color: #2c3e50;
+            color: #E67A00; /* สีส้มเข้มสำหรับหัวข้อ */
             text-align: center;
             margin-bottom: 30px;
         }
@@ -33,15 +35,18 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: #CC6D00; /* สีส้มสำหรับ label */
         }
         input[type="text"], 
         textarea, 
         select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #FFD8B8; /* กรอบสีส้มอ่อน */
             border-radius: 4px;
             box-sizing: border-box;
+            background-color: #FFF9F2; /* สีพื้นหลัง input */
+            color: #5A3E36; /* สีข้อความ */
         }
         textarea {
             height: 150px;
@@ -62,38 +67,56 @@
             flex: 1;
         }
         .btn {
-            background-color: #3498db;
+            background-color: #FFA726; /* สีส้มสำหรับปุ่มปกติ */
             color: white;
             border: none;
             padding: 10px 15px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #FB8C00; /* สีส้มเข้มเมื่อ hover */
         }
         .btn-add {
-            background-color: #2ecc71;
+            background-color: #FFB74D; /* สีส้มอ่อนสำหรับปุ่มเพิ่ม */
             margin-bottom: 20px;
         }
         .btn-add:hover {
-            background-color: #27ae60;
+            background-color: #FFA000; /* สีส้มเมื่อ hover */
         }
         .btn-remove {
-            background-color: #e74c3c;
+            background-color: #FF7043; /* สีส้มแดงสำหรับปุ่มลบ */
         }
         .btn-remove:hover {
-            background-color: #c0392b;
+            background-color: #F4511E; /* สีส้มแดงเข้มเมื่อ hover */
         }
         .btn-container {
             text-align: center;
             margin-top: 30px;
         }
+        .btn-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #FFCC80; /* สีส้มอ่อนสำหรับปุ่มกลับบ้าน */
+            color: #5A3E36; /* สีข้อความเข้ม */
+        }
+        .btn-home:hover {
+            background-color: #FFB74D; /* สีส้มเมื่อ hover */
+        }
+        select:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid #FFB74D; /* เส้นขอบเมื่อ focus เป็นสีส้ม */
+            border-color: #FFB74D;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="http://127.0.0.1:5500/html+css..html" class="btn btn-home">กลับสู่หน้าหลัก</a>
         <h1>สร้างสูตรใหม่</h1>
         
         <form id="recipe-form">
@@ -105,7 +128,8 @@
             <div class="form-group">
                 <label for="recipe-category">หมวดหมู่</label>
                 <select id="recipe-category" name="recipe-category">
-                    <option value="food">อาหาร</option>
+                    <option value="food">อาหารไทย</option>
+                    <option value="food">อาหารนานาชาติ</option>
                     <option value="drink">เครื่องดื่ม</option>
                     <option value="dessert">ขนม/ของหวาน</option>
                     <option value="other">อื่นๆ</option>
