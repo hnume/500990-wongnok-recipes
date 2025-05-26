@@ -215,11 +215,15 @@ docker-compose up --build
 หรือสามารถเปิดผ่าน Live Server ใน VS Code ได้
 
 
-# recording 2025-05-23 200614.mp4
+
 
 (https://github.com/hnume/500990-wongnok-recipes/blob/main/Recording%202025-05-23%20200614.mp4)
 
+การrun node js  
 
+(https://github.com/hnume/500990-wongnok-recipes/blob/main/%E0%B8%81%E0%B8%B2%E0%B8%A3run%20page2.mp4)
+
+การ  run page โดยการเปิดผ่าน VS code (https://github.com/hnume/500990-wongnok-recipes/blob/main/%E0%B8%81%E0%B8%B2%E0%B8%A3run%20page2.mp4)
 
 
 *******************************************************************************************************************************************************************
