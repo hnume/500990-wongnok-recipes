@@ -223,7 +223,7 @@ docker-compose up --build
 
 (https://github.com/hnume/500990-wongnok-recipes/blob/main/%E0%B8%81%E0%B8%B2%E0%B8%A3run%20page2.mp4)
 
-การ  run page โดยการเปิดผ่าน VS code (https://github.com/hnume/500990-wongnok-recipes/blob/main/%E0%B8%81%E0%B8%B2%E0%B8%A3run%20page2.mp4)
+การ run page โดยการเปิดผ่าน VS code 
 
 
 *******************************************************************************************************************************************************************
