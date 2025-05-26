@@ -225,15 +225,15 @@ docker-compose up --build
 🏗️ สถาปัตยกรรมระบบ
 
 
+
 ![deepseek_mermaid_20250523_b0c977](https://github.com/user-attachments/assets/1e14a616-c303-481b-b0b3-b83491e2ad01)
 
-    
+
+
     
     A[Client] -->|HTTP Requests| B[Node.js Server]
     B -->|Query| C[MySQL Database]
     B -->|API Calls| D[External Services]
-
-
 
 
 
